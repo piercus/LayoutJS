@@ -1,0 +1,138 @@
+sand.use("layouts/LinLog","core/toDOM",function(app){
+
+  var testLinLog = function(n){
+    var vs = [], es = [], esIndex = {};
+    for(var i = 0; i < n; i++){vs.push({id : i})};
+    
+    for(var i = 0; i < 3*n; i++){
+      var fr = Math.floor(Math.random()*n), to = Math.floor(Math.random()*n);
+      if(to > fr){
+        if(!esIndex[fr+","+to]){
+          esIndex[fr+","+to] = true;
+          es.push({
+           from : fr,
+           to: to
+          })
+        }
+      }
+    };
+    //test();
+//console.log("var vs = "+JSON.stringify(vs)+",es="+JSON.stringify(es)+";");
+
+//var vs = [{"id":0},{"id":1},{"id":2},{"id":3},{"id":4},{"id":5},{"id":6},{"id":7},{"id":8},{"id":9},{"id":10},{"id":11},{"id":12},{"id":13},{"id":14},{"id":15},{"id":16},{"id":17},{"id":18},{"id":19},{"id":20},{"id":21},{"id":22},{"id":23},{"id":24},{"id":25},{"id":26},{"id":27},{"id":28},{"id":29},{"id":30},{"id":31},{"id":32},{"id":33},{"id":34},{"id":35},{"id":36},{"id":37},{"id":38},{"id":39},{"id":40},{"id":41},{"id":42},{"id":43},{"id":44},{"id":45},{"id":46},{"id":47},{"id":48},{"id":49},{"id":50},{"id":51},{"id":52},{"id":53},{"id":54},{"id":55},{"id":56},{"id":57},{"id":58},{"id":59},{"id":60},{"id":61},{"id":62},{"id":63},{"id":64},{"id":65},{"id":66},{"id":67},{"id":68},{"id":69},{"id":70},{"id":71},{"id":72},{"id":73},{"id":74},{"id":75},{"id":76},{"id":77},{"id":78},{"id":79},{"id":80},{"id":81},{"id":82},{"id":83},{"id":84},{"id":85},{"id":86},{"id":87},{"id":88},{"id":89},{"id":90},{"id":91},{"id":92},{"id":93},{"id":94},{"id":95},{"id":96},{"id":97},{"id":98},{"id":99},{"id":100},{"id":101},{"id":102},{"id":103},{"id":104},{"id":105},{"id":106},{"id":107},{"id":108},{"id":109},{"id":110},{"id":111},{"id":112},{"id":113},{"id":114},{"id":115},{"id":116},{"id":117},{"id":118},{"id":119},{"id":120},{"id":121},{"id":122},{"id":123},{"id":124},{"id":125},{"id":126},{"id":127},{"id":128},{"id":129},{"id":130},{"id":131},{"id":132},{"id":133},{"id":134},{"id":135},{"id":136},{"id":137},{"id":138},{"id":139},{"id":140},{"id":141},{"id":142},{"id":143},{"id":144},{"id":145},{"id":146},{"id":147},{"id":148},{"id":149},{"id":150},{"id":151},{"id":152},{"id":153},{"id":154},{"id":155},{"id":156},{"id":157},{"id":158},{"id":159},{"id":160},{"id":161},{"id":162},{"id":163},{"id":164},{"id":165},{"id":166},{"id":167},{"id":168},{"id":169},{"id":170},{"id":171},{"id":172},{"id":173},{"id":174},{"id":175},{"id":176},{"id":177},{"id":178},{"id":179},{"id":180},{"id":181},{"id":182},{"id":183},{"id":184},{"id":185},{"id":186},{"id":187},{"id":188},{"id":189},{"id":190},{"id":191},{"id":192},{"id":193},{"id":194},{"id":195},{"id":196},{"id":197},{"id":198},{"id":199}],es=[{"from":77,"to":156},{"from":55,"to":92},{"from":59,"to":68},{"from":148,"to":190},{"from":98,"to":191},{"from":24,"to":153},{"from":120,"to":145},{"from":118,"to":158},{"from":16,"to":78},{"from":110,"to":159},{"from":99,"to":184},{"from":140,"to":146},{"from":24,"to":164},{"from":96,"to":177},{"from":137,"to":163},{"from":108,"to":157},{"from":16,"to":114},{"from":31,"to":163},{"from":187,"to":198},{"from":79,"to":135},{"from":26,"to":96},{"from":150,"to":188},{"from":8,"to":116},{"from":73,"to":89},{"from":86,"to":119},{"from":168,"to":196},{"from":95,"to":195},{"from":100,"to":161},{"from":93,"to":124},{"from":8,"to":177},{"from":25,"to":74},{"from":8,"to":19},{"from":156,"to":199},{"from":42,"to":176},{"from":55,"to":77},{"from":92,"to":146},{"from":115,"to":139},{"from":123,"to":152},{"from":55,"to":176},{"from":5,"to":49},{"from":114,"to":158},{"from":56,"to":126},{"from":126,"to":140},{"from":0,"to":100},{"from":2,"to":56},{"from":66,"to":96},{"from":6,"to":134},{"from":67,"to":104},{"from":45,"to":67},{"from":111,"to":132},{"from":61,"to":122},{"from":16,"to":145},{"from":77,"to":122},{"from":16,"to":64},{"from":2,"to":102},{"from":91,"to":168},{"from":0,"to":7},{"from":48,"to":172},{"from":100,"to":120},{"from":152,"to":162},{"from":42,"to":137},{"from":10,"to":77},{"from":25,"to":165},{"from":54,"to":87},{"from":23,"to":156},{"from":55,"to":138},{"from":18,"to":78},{"from":23,"to":190},{"from":90,"to":130},{"from":71,"to":161},{"from":10,"to":193},{"from":132,"to":138},{"from":35,"to":133},{"from":105,"to":148},{"from":15,"to":138},{"from":46,"to":76},{"from":152,"to":183},{"from":183,"to":194},{"from":110,"to":182},{"from":22,"to":140},{"from":26,"to":53},{"from":96,"to":122},{"from":120,"to":144},{"from":141,"to":160},{"from":44,"to":125},{"from":106,"to":138},{"from":153,"to":196},{"from":29,"to":125},{"from":90,"to":108},{"from":63,"to":93},{"from":2,"to":93},{"from":42,"to":47},{"from":100,"to":186},{"from":75,"to":79},{"from":40,"to":64},{"from":36,"to":178},{"from":118,"to":149},{"from":47,"to":52},{"from":71,"to":176},{"from":5,"to":181},{"from":4,"to":168},{"from":104,"to":113},{"from":102,"to":138},{"from":64,"to":76},{"from":172,"to":177},{"from":46,"to":175},{"from":56,"to":186},{"from":90,"to":106},{"from":30,"to":74},{"from":71,"to":184},{"from":27,"to":139},{"from":22,"to":73},{"from":32,"to":171},{"from":101,"to":150},{"from":161,"to":170},{"from":9,"to":49},{"from":88,"to":116},{"from":9,"to":36},{"from":42,"to":169},{"from":81,"to":175},{"from":84,"to":179},{"from":12,"to":70},{"from":37,"to":178},{"from":107,"to":177},{"from":30,"to":120},{"from":70,"to":101},{"from":26,"to":140},{"from":14,"to":98},{"from":36,"to":55},{"from":77,"to":86},{"from":59,"to":160},{"from":96,"to":118},{"from":20,"to":133},{"from":2,"to":198},{"from":109,"to":124},{"from":120,"to":164},{"from":78,"to":126},{"from":36,"to":117},{"from":22,"to":62},{"from":0,"to":96},{"from":33,"to":197},{"from":137,"to":138},{"from":140,"to":156},{"from":105,"to":121},{"from":43,"to":156},{"from":93,"to":197},{"from":6,"to":95},{"from":68,"to":147},{"from":31,"to":168},{"from":48,"to":101},{"from":11,"to":172},{"from":135,"to":196},{"from":101,"to":165},{"from":8,"to":22},{"from":173,"to":177},{"from":89,"to":150},{"from":93,"to":102},{"from":66,"to":159},{"from":43,"to":104},{"from":96,"to":168},{"from":52,"to":143},{"from":102,"to":170},{"from":22,"to":155},{"from":39,"to":81},{"from":18,"to":104},{"from":87,"to":111},{"from":72,"to":159},{"from":103,"to":133},{"from":131,"to":154},{"from":70,"to":79},{"from":14,"to":180},{"from":41,"to":150},{"from":9,"to":161},{"from":0,"to":98},{"from":161,"to":199},{"from":142,"to":191},{"from":14,"to":143},{"from":83,"to":102},{"from":44,"to":46},{"from":39,"to":102},{"from":37,"to":198},{"from":87,"to":170},{"from":90,"to":164},{"from":36,"to":81},{"from":45,"to":161},{"from":72,"to":137},{"from":108,"to":187},{"from":25,"to":94},{"from":95,"to":168}];
+
+//var vs = [{"id":0},{"id":1},{"id":2},{"id":3},{"id":4},{"id":5},{"id":6},{"id":7},{"id":8},{"id":9},{"id":10},{"id":11},{"id":12},{"id":13},{"id":14},{"id":15},{"id":16},{"id":17},{"id":18},{"id":19},{"id":20},{"id":21},{"id":22},{"id":23},{"id":24},{"id":25},{"id":26},{"id":27},{"id":28},{"id":29},{"id":30},{"id":31},{"id":32},{"id":33},{"id":34},{"id":35},{"id":36},{"id":37},{"id":38},{"id":39},{"id":40},{"id":41},{"id":42},{"id":43},{"id":44},{"id":45},{"id":46},{"id":47},{"id":48},{"id":49}],es=[{"from":34,"to":46},{"from":2,"to":49},{"from":11,"to":36},{"from":20,"to":27},{"from":2,"to":36},{"from":1,"to":35},{"from":32,"to":42},{"from":13,"to":27},{"from":11,"to":18},{"from":15,"to":37},{"from":23,"to":35},{"from":17,"to":32},{"from":9,"to":34},{"from":35,"to":42},{"from":12,"to":27},{"from":2,"to":25},{"from":22,"to":38},{"from":23,"to":24},{"from":28,"to":46},{"from":16,"to":33},{"from":14,"to":40},{"from":5,"to":39},{"from":11,"to":19},{"from":27,"to":34},{"from":15,"to":34},{"from":7,"to":14},{"from":7,"to":8},{"from":15,"to":31},{"from":1,"to":26},{"from":9,"to":42},{"from":29,"to":34},{"from":17,"to":21},{"from":4,"to":41},{"from":17,"to":36},{"from":11,"to":20},{"from":20,"to":24},{"from":16,"to":47},{"from":45,"to":48},{"from":8,"to":41},{"from":8,"to":20},{"from":26,"to":29},{"from":28,"to":38},{"from":0,"to":42},{"from":4,"to":38},{"from":7,"to":31},{"from":18,"to":23},{"from":15,"to":35},{"from":3,"to":31},{"from":9,"to":35},{"from":28,"to":43},{"from":21,"to":29},{"from":5,"to":41},{"from":25,"to":38},{"from":10,"to":35},{"from":6,"to":15},{"from":17,"to":39},{"from":9,"to":16},{"from":27,"to":44},{"from":22,"to":29},{"from":26,"to":31},{"from":3,"to":48},{"from":3,"to":35},{"from":31,"to":38},{"from":10,"to":17},{"from":23,"to":47},{"from":29,"to":47}];
+
+//    var vs = [{"id":0},{"id":1},{"id":2},{"id":3},{"id":4},{"id":5},{"id":6},{"id":7},{"id":8},{"id":9}];
+//    var es = [{"from":3,"to":6},{"from":2,"to":5},{"from":6,"to":9},{"from":2,"to":9},{"from":4,"to":6},{"from":2,"to":6}];
+
+//var vs = [{"id":0},{"id":1}];
+//    var es = [{"from":0,"to":1}];
+//var vs = [{"id":0},{"id":1},{"id":2}];
+//    var es = [{"from":0,"to":1},{"from":2,"to":1},{"from":0,"to":2}];
+//var vs = [{"id":0},{"id":1},{"id":2},{"id":3},{"id":4},{"id":5},{"id":6},{"id":7},{"id":8}],
+//    es = [{"from":0,"to":1},{"from":2,"to":1},{"from":0,"to":2},{"from":0,"to":3},{"from":0,"to":4},{"from":0,"to":5},{"from":1,"to":3},{"from":1,"to":4},{"from":1,"to":5},{"from":2,"to":3},{"from":2,"to":4},{"from":2,"to":5},{"from":3,"to":5},{"from":3,"to":4},{"from":2,"to":6},{"from":6,"to":7},{"from":8,"to":7},{"from":6,"to":8}];
+   //es = [];
+
+    var l = new app.LinLog({
+        vertices: vs,
+        edges : es
+    });
+    
+    var stop = document.createElement("button");
+    stop.innerHTML = "Stop";
+    stop.style.visibility = "visible";
+    document.body.appendChild(stop);
+    
+    var start = document.createElement("button");
+    start.innerHTML = "Start";
+    start.style.visibility = "hidden";
+    document.body.appendChild(start);
+    
+    start.onclick = function(){
+      l.start();
+      start.style.visibility = "hidden";
+      stop.style.visibility = "visible";
+    };
+    
+    stop.onclick = function(){
+      l.stop();
+      stop.style.visibility = "hidden";
+      start.style.visibility = "visible";
+    };
+    
+    var stDate = new Date();
+    //var l = new app.layouts.LinLog({"vertices":[,"edges":});
+    
+    this.getCost = function(){
+      //console.log(l.getCost());
+    }
+    var paper = Raphael(10,50,1000,1000);
+    
+    var draw = function(vertices,edges){
+        var endDate = new Date();
+        var transform = function(x){
+          return x+500;
+        }
+        var t = transform;
+        //console.log("time in ms :",endDate.getTime()-stDate.getTime())
+        
+        l.bnTree && l.bnTree.drawBoxes(paper);
+        vertices.each(function(v){
+          v.redraw || (v.redraw = function(){
+            if(!this.circle){
+              this.circle = paper.circle(t(v.x), t(v.y), 10).attr("fill", "#f00");
+              this.circle.click(function(){
+                console.log(l.getDetails(v));
+              });
+
+            } else {
+              this.circle.attr({cx: t(this.x), cy: t(this.y)});
+            }
+            var arrowPath = "M"+t(v.x)+","+t(v.y)+"l"+v.dx*10+","+v.dy*10;
+            if(this.arrow){
+              this.arrow.attr({"path":arrowPath});
+            } else {
+              this.arrow = paper.path(arrowPath).attr("fill", "#0FF");
+            }
+          });
+          v.redraw();
+          
+          v.circle.drag(function(dx,dy,x,y){
+            v.x = this._dx+x,
+            v.y = this._dy+y;
+            v.redraw();
+            v.edgesFrom.concat(v.edgesTo).each(function(e){
+              e.redraw();
+            });
+          },function(x,y){
+            this._dx = v.x-x;
+            this._dy = v.y-y;
+          },function(){
+            this.getCost();
+          }.bind(this))
+          
+        });
+        es.each(function(e){
+          e.redraw || (e.redraw = function(){
+            var p = "M"+t(vertices[e.from].x)+","+t(vertices[e.from].y)+"L"+t(vertices[e.to].x)+","+t(vertices[e.to].y);
+            if(this.path){
+              this.path.attr({"path":p});
+            } else {
+              this.path = paper.path(p).attr("stroke", "#f0f");
+            }
+
+          });
+          e.redraw();
+        });
+        
+        
+    }.bind(this);
+    var currentT = 100000;
+
+    
+    l.compute(draw,{dynamic : true});
+  };
+
+  testLinLog(80);
+});
